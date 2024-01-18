@@ -6,12 +6,13 @@ const Post = require("../models/Post");
 const Comment = require("../models/Comment");
 const verifyToken = require("../verifyToken");
 const mongoose = require("mongoose");
+const Requests = require("../models/Requests");
 
 const VerifyCanWrite = async (req, res, next) => {
-	const CheckUser = await User.findOne({
-		_id: new mongoose.Types.ObjectId(req.userId),
+	const CheckUser = await Requests.findOne({
+		userId: new mongoose.Types.ObjectId(req.userId),
 	});
-	if (!CheckUser.canWrite) {
+	if (CheckUser.status !== "accepted") {
 		return res.status(403).json("You are not authorized!");
 	}
 

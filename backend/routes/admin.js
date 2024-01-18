@@ -53,7 +53,16 @@ router.delete("/deleteUser/:user", async (req, res) => {
 router.get("/requests", async (req, res) => {
 	try {
 		const requests = await Requests.find();
-		res.json(requests);
+		const users = [];
+		requests.forEach((e) => {
+			users.push(e.userId);
+		});
+
+		const usersInfo = await Users.find({
+			_id: { $in: users },
+		});
+		console.log(requests);
+		res.json({ requests, usersInfo });
 	} catch (err) {
 		res.json({ message: err });
 	}
@@ -91,7 +100,7 @@ router.post("/rejectRequest/:request", async (req, res) => {
 			{ status: "rejected" }
 		);
 
-		await Requests.findByIdAndDelete(req.params.request);
+		// await Requests.findByIdAndDelete(req.params.request);
 		res.status(200).json({ message: "Request rejected successfully" });
 	} catch (err) {
 		res.json({ message: err });
