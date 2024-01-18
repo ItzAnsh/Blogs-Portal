@@ -21,6 +21,7 @@ const Login = () => {
 			);
 			// console.log(res.data)
 			setUser(res.data);
+			toast.success("Logged in successfully");
 			navigate("/");
 		} catch (err) {
 			setError(true);

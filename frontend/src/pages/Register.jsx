@@ -3,6 +3,7 @@ import Footer from "../components/Footer";
 import { useState } from "react";
 import axios from "axios";
 import { URL } from "../url";
+import toast from "react-hot-toast";
 
 const Register = () => {
 	const [username, setUsername] = useState("");
@@ -21,6 +22,7 @@ const Register = () => {
 			setUsername(res.data.username);
 			setEmail(res.data.email);
 			setPassword(res.data.password);
+			toast.success("Check your email for verification link");
 			setError(false);
 			navigate("/login");
 		} catch (err) {
