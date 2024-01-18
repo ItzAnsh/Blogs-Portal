@@ -6,6 +6,7 @@ import { UserContext } from "../context/UserContext";
 import { URL } from "../url";
 import axios from "axios";
 import { Navigate, useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 
 const CreatePost = () => {
 	const [title, setTitle] = useState("");
@@ -64,6 +65,11 @@ const CreatePost = () => {
 			navigate("/posts/post/" + res.data._id);
 			// console.log(res.data)
 		} catch (err) {
+			if (err.response.status === 403) {
+				toast.error(
+					"You are not allowed to write please apply to write blogs from navigation menu"
+				);
+			}
 			console.log(err);
 		}
 	};

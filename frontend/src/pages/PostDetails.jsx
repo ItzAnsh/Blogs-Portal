@@ -9,6 +9,7 @@ import { URL, IF } from "../url";
 import { useContext, useEffect, useState } from "react";
 import { UserContext } from "../context/UserContext";
 import Loader from "../components/Loader";
+import toast from "react-hot-toast";
 
 const PostDetails = () => {
 	const postId = useParams().id;
@@ -37,6 +38,9 @@ const PostDetails = () => {
 			console.log(res.data);
 			navigate("/");
 		} catch (err) {
+			if (err.response.status === 403) {
+				toast.error("You are not allowed to delete this post");
+			}
 			console.log(err);
 		}
 	};

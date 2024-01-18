@@ -6,6 +6,7 @@ import axios from "axios";
 import { URL } from "../url";
 import { useNavigate, useParams } from "react-router-dom";
 import { UserContext } from "../context/UserContext";
+import toast from "react-hot-toast";
 
 const EditPost = () => {
 	const postId = useParams().id;
@@ -63,6 +64,9 @@ const EditPost = () => {
 			navigate("/posts/post/" + res.data._id);
 			// console.log(res.data)
 		} catch (err) {
+			if (err.response.status === 403) {
+				toast.error("You are not authorized to update this post");
+			}
 			console.log(err);
 		}
 	};

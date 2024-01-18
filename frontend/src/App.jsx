@@ -9,6 +9,7 @@ import Profile from "./pages/Profile";
 import { UserContextProvider } from "./context/UserContext";
 import Navbar from "./components/Navbar";
 import MyBlogs from "./pages/MyBlogs";
+import Admin from "./pages/Admin";
 
 const App = () => {
 	return (
@@ -23,7 +24,7 @@ const App = () => {
 				<Route exact path="/edit/:id" element={<EditPost />} />
 				<Route exact path="/myblogs/:id" element={<MyBlogs />} />
 				<Route exact path="/profile/:id" element={<Profile />} />
-				<Route exact path="/admin" element={<></>} />
+				<Route exact path="/admin" element={<Admin />} />
 			</Routes>
 		</UserContextProvider>
 	);

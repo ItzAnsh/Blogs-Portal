@@ -4,6 +4,7 @@ import { useContext, useState } from "react";
 import axios from "axios";
 import { URL } from "../url";
 import { UserContext } from "../context/UserContext";
+import toast from "react-hot-toast";
 
 const Login = () => {
 	const [email, setEmail] = useState("");
