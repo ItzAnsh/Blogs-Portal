@@ -1,0 +1,26 @@
+{
+	"name": "blogsportal",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"server": "nodemon backend/index.js",
+		"client": "npm start --prefix frontend",
+		"dev": "concurrently \"npm run server\" \"npm run client\"",
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/ItzAnsh/Blogs-Portal.git"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/ItzAnsh/Blogs-Portal/issues"
+	},
+	"homepage": "https://github.com/ItzAnsh/Blogs-Portal#readme",
+	"dependencies": {
+		"concurrently": "^8.2.2"
+	}
+}
